@@ -1,0 +1,85 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'microsoft yahei', 'Helvetica', simhei, simsun, sans-serif;
+    background-color: #F7F7F7;
+}
+section{
+    width: 100%;
+    position: relative;
+    height: 4.5rem;
+    background: #000;
+    overflow: hidden;
+}
+section>video{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+.controls{
+    width: 100%;
+    position: absolute;
+    padding: 0 0.2rem;
+    height: 0.3rem;
+    left: 0;
+    bottom: 0.15rem;
+    box-sizing: border-box;
+    opacity: 1;
+    transition: opacity 2s;
+}
+a{
+    width: 4%;
+    height: 100%;
+    text-align: center;
+    line-height: 0.3rem;
+    color: #fff;
+    font-size: 0.28rem;
+}
+.switch{
+    float: left;
+    margin-right: 0.2rem;
+    background: url("../img/play.png") no-repeat center/cover;
+}
+.switch_hot{
+    background: url("../img/pause.png") no-repeat center/cover;
+}
+.expand{
+    float: right;
+    background: url("../img/full@2x.png") no-repeat center/cover;
+}
+.progress{
+    width: 60%;
+    height: 3px;
+    background: #fff;
+    margin-top: 0.12rem;
+    float: left;
+    margin-right: 0.2rem;
+}
+.timer{
+    font-size: 0.14rem;
+    color: #fff;
+    line-height: 0.3rem;
+}
+.loaded{
+    height: 100%;
+    background: #4179F7;
+    width: 0;
+}
+.playState{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 2s;
+    background: url("../img/play@2x.png") no-repeat center/cover;
+}
+.playState_hot{
+    background: url("../img/pause@2x.png") no-repeat center/cover;
+}
