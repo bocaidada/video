@@ -2,6 +2,7 @@ var video = document.querySelector("video");
 var isPlay = document.querySelector(".switch");
 var progress = document.querySelector(".progress");
 var expand = document.querySelector(".expand");
+var video_box = document.querySelectorAll(".video_box");
 var controls = document.querySelector(".controls");
 var playStateUrl = document.querySelector(".playState");
 var loaded = document.querySelector(".progress > .loaded");
@@ -52,8 +53,13 @@ progress.onclick = function(){
 };
 
 //全屏
+//外层盒子占全屏宽高，内部100%
 expand.onclick = function(){
-    video.webkitRequestFullScreen();
+    // video.webkitRequestFullScreen();
+    // video_box.webkitRequestFullScreen();
+    video_box.forEach(p=>{
+        p.classList.toggle('box_full');
+    })
 };
 
 // 播放状态下控制条隐藏
@@ -68,11 +74,6 @@ video.addEventListener('pause', function () {
     block();
 });
 video.addEventListener('touchstart',function () {
-    if(video.paused) {
-        video.play();
-        playStateUrl.classList.toggle("playState_hot");
-        isPlay.classList.toggle("switch_hot");
-    }
     if(playStateFlag){
         block();
     }else{
@@ -81,11 +82,11 @@ video.addEventListener('touchstart',function () {
     playStateFlag=!playStateFlag;
 });
 function block() {
-    controls.style.opacity='1';
+    // controls.style.opacity='1';
     playStateUrl.style.opacity='1';
 }
 function none() {
-    controls.style.opacity='0';
+    // controls.style.opacity='0';
     playStateUrl.style.opacity='0';
 }
 
@@ -103,3 +104,14 @@ function getFormatTime(time) {
     // return h+":"+m+":"+s;
     return m+":"+s;
 }
+
+//全屏宽高旋转移动
+(function(){
+    var template = document.querySelector(".template").getBoundingClientRect();
+    var width = template.width;
+    var height = template.height;
+    var org = (width/height)/2;
+    var style= document.createElement("style");
+    style.innerHTML = ".box_full{transform-origin: " + org*100 + "%;}";
+    document.body.appendChild(style)
+}());
